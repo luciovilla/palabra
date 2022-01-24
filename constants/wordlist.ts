@@ -22,5 +22,5 @@ export const WORDS = [
   'picheo',
   'dentro',
   'volver',
-  'conejo',
+  'conejo'
 ]

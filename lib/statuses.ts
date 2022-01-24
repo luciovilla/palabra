@@ -31,9 +31,7 @@ export type CharValue =
   | 'M'
   | 'Ñ'
 
-export const getStatuses = (
-  guesses: string[]
-): { [key: string]: CharStatus } => {
+export const getStatuses = (guesses: string[]): { [key: string]: CharStatus } => {
   const charObj: { [key: string]: CharStatus } = {}
 
   guesses.forEach((word) => {

@@ -12,12 +12,9 @@ export const Cell = ({ value, status }: Props) => {
 
   useEffect(() => {
     if (!status) setClasses('bg-white border-slate-200')
-    if (status === 'absent')
-      setClasses('bg-slate-400 text-white border-slate-400')
-    if (status === 'correct')
-      setClasses('bg-green-500 text-white border-green-500')
-    if (status === 'present')
-      setClasses('bg-yellow-500 text-white border-yellow-500')
+    if (status === 'absent') setClasses('bg-slate-400 text-white border-slate-400')
+    if (status === 'correct') setClasses('bg-green-500 text-white border-green-500')
+    if (status === 'present') setClasses('bg-yellow-500 text-white border-yellow-500')
     setTextValue(value)
   }, [])
 

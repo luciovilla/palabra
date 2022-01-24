@@ -2,10 +2,7 @@ import { WORDS } from '../constants/wordlist'
 import { VALIDGUESSES } from '../constants/validGuesses'
 
 export const isWordInWordList = (word: string) => {
-  return (
-    WORDS.includes(word.toLowerCase()) ||
-    VALIDGUESSES.includes(word.toLowerCase())
-  )
+  return WORDS.includes(word.toLowerCase()) || VALIDGUESSES.includes(word.toLowerCase())
 }
 
 export const isWinningWord = (word: string) => {
@@ -22,7 +19,7 @@ export const getWordOfDay = () => {
 
   return {
     solution: WORDS[index].toUpperCase(),
-    solutionIndex: 0 + 1,
+    solutionIndex: 0 + 1
   }
 }
 

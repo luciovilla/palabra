@@ -10,10 +10,7 @@ import { WinModal } from '../components/modals/WinModal'
 import { StatsModal } from '../components/modals/StatsModal'
 import { isWordInWordList, isWinningWord, solution } from '../lib/words'
 import { addStatsForCompletedGame, loadStats } from '../lib/stats'
-import {
-  loadGameStateFromLocalStorage,
-  saveGameStateToLocalStorage,
-} from '../lib/localStorage'
+import { loadGameStateFromLocalStorage, saveGameStateToLocalStorage } from '../lib/localStorage'
 
 function App() {
   const [currentGuess, setCurrentGuess] = useState('')
@@ -110,12 +107,7 @@ function App() {
         />
       </div>
       <Grid guesses={guesses} currentGuess={currentGuess} />
-      <Keyboard
-        onChar={onChar}
-        onDelete={onDelete}
-        onEnter={onEnter}
-        guesses={guesses}
-      />
+      <Keyboard onChar={onChar} onDelete={onDelete} onEnter={onEnter} guesses={guesses} />
       <WinModal
         isOpen={isWinModalOpen}
         handleClose={() => setIsWinModalOpen(false)}
@@ -128,19 +120,13 @@ function App() {
           }, 2000)
         }}
       />
-      <InfoModal
-        isOpen={isInfoModalOpen}
-        handleClose={() => setIsInfoModalOpen(false)}
-      />
+      <InfoModal isOpen={isInfoModalOpen} handleClose={() => setIsInfoModalOpen(false)} />
       <StatsModal
         isOpen={isStatsModalOpen}
         handleClose={() => setIsStatsModalOpen(false)}
         gameStats={stats}
       />
-      <AboutModal
-        isOpen={isAboutModalOpen}
-        handleClose={() => setIsAboutModalOpen(false)}
-      />
+      <AboutModal isOpen={isAboutModalOpen} handleClose={() => setIsAboutModalOpen(false)} />
 
       <button
         type="button"
@@ -151,15 +137,8 @@ function App() {
       </button>
       <Alert message="Not enough letters" isOpen={isNotEnoughLetters} />
       <Alert message="Word not found" isOpen={isWordNotFoundAlertOpen} />
-      <Alert
-        message={`You lost, the word was ${solution}`}
-        isOpen={isGameLost}
-      />
-      <Alert
-        message="Game copied to clipboard"
-        isOpen={shareComplete}
-        variant="success"
-      />
+      <Alert message={`You lost, the word was ${solution}`} isOpen={isGameLost} />
+      <Alert message="Game copied to clipboard" isOpen={shareComplete} variant="success" />
     </div>
   )
 }

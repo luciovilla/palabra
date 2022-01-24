@@ -960,5 +960,5 @@ export const VALIDGUESSES = [
   'crecen',
   'outfit',
   'poodle',
-  'itachi',
+  'itachi'
 ]

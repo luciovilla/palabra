@@ -11,12 +11,7 @@ type Props = {
   handleShare: () => void
 }
 
-export const WinModal = ({
-  isOpen,
-  handleClose,
-  guesses,
-  handleShare,
-}: Props) => {
+export const WinModal = ({ isOpen, handleClose, guesses, handleShare }: Props) => {
   return (
     <BaseModal title="You won!" isOpen={isOpen} handleClose={handleClose}>
       <div>
@@ -24,10 +19,7 @@ export const WinModal = ({
           <CheckIcon className="h-6 w-6 text-green-600" aria-hidden="true" />
         </div>
         <div className="mt-3 text-center sm:mt-5">
-          <Dialog.Title
-            as="h3"
-            className="text-lg leading-6 font-medium text-gray-900"
-          >
+          <Dialog.Title as="h3" className="text-lg leading-6 font-medium text-gray-900">
             You won!
           </Dialog.Title>
           <div className="mt-2">

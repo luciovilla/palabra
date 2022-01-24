@@ -1,15 +1,8 @@
-import {
-  GameStats,
-  loadStatsFromLocalStorage,
-  saveStatsToLocalStorage,
-} from './localStorage'
+import { GameStats, loadStatsFromLocalStorage, saveStatsToLocalStorage } from './localStorage'
 
 // In stats array elements 0-5 are successes in 1-6 trys
 
-export const addStatsForCompletedGame = (
-  gameStats: GameStats,
-  count: number
-) => {
+export const addStatsForCompletedGame = (gameStats: GameStats, count: number) => {
   // Count is number of incorrect guesses before end.
   const stats = { ...gameStats }
 
@@ -40,7 +33,7 @@ const defaultStats: GameStats = {
   currentStreak: 0,
   bestStreak: 0,
   totalGames: 0,
-  successRate: 0,
+  successRate: 0
 }
 
 export const loadStats = () => {
@@ -50,7 +43,5 @@ export const loadStats = () => {
 const getSuccessRate = (gameStats: GameStats) => {
   const { totalGames, gamesFailed } = gameStats
 
-  return Math.round(
-    (100 * (totalGames - gamesFailed)) / Math.max(totalGames, 1)
-  )
+  return Math.round((100 * (totalGames - gamesFailed)) / Math.max(totalGames, 1))
 }

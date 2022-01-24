@@ -10,13 +10,7 @@ type Props = {
   onClick: (value: KeyValue) => void
 }
 
-export const Key = ({
-  children,
-  status,
-  width = 40,
-  value,
-  onClick,
-}: Props) => {
+export const Key = ({ children, status, width = 40, value, onClick }: Props) => {
   const [classes, setClasses] = useState('')
 
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
@@ -25,17 +19,12 @@ export const Key = ({
   }
 
   useEffect(() => {
-    if (!status)
-      setClasses('bg-slate-200 hover:bg-slate-300 active:bg-slate-400')
+    if (!status) setClasses('bg-slate-200 hover:bg-slate-300 active:bg-slate-400')
     if (status === 'absent') setClasses('bg-slate-400 text-white')
     if (status === 'correct')
-      setClasses(
-        'bg-green-500 hover:bg-green-600 active:bg-green-700 text-white'
-      )
+      setClasses('bg-green-500 hover:bg-green-600 active:bg-green-700 text-white')
     if (status === 'present')
-      setClasses(
-        'bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 text-white'
-      )
+      setClasses('bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 text-white')
   }, [])
 
   return (

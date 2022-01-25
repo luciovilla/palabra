@@ -99,23 +99,35 @@ function App() {
   return (
     <>
       <Meta />
-      <div className="py-8 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="flex max-w-md mx-auto items-center mb-1">
-          <h1 className="text-3xl grow font-bold">Reggaetón Wordle</h1>
-          <InformationCircleIcon
-            className="h-6 w-6 cursor-pointer"
-            onClick={() => setIsInfoModalOpen(true)}
-          />
-          <ChartBarIcon
-            className="h-6 w-6 cursor-pointer"
-            onClick={() => setIsStatsModalOpen(true)}
-          />
-        </div>
-        <div className="max-w-md mx-auto mb-8">
-          <h2 className="italic">The word is one of Bad Bunny's most used in his lyrics.</h2>
+      <div className="py-8 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex flex-col h-screen justify-between">
+        <div className="flex flex-col max-w-md mx-auto items-center mb-1">
+          <div className="flex items-center w-full">
+            <h1 className="text-3xl grow font-bold">Reggaetón Wordle</h1>
+            <InformationCircleIcon
+              className="h-6 w-6 cursor-pointer"
+              onClick={() => setIsInfoModalOpen(true)}
+            />
+            <ChartBarIcon
+              className="h-6 w-6 cursor-pointer"
+              onClick={() => setIsStatsModalOpen(true)}
+            />
+          </div>
+          <div className="max-w-md mx-auto mb-4 sm:mb-8">
+            <h2 className="italic">The word is one of Bad Bunny's most used in his lyrics.</h2>
+          </div>
         </div>
         <Grid guesses={guesses} currentGuess={currentGuess} />
-        <Keyboard onChar={onChar} onDelete={onDelete} onEnter={onEnter} guesses={guesses} />
+        <div>
+          <Keyboard onChar={onChar} onDelete={onDelete} onEnter={onEnter} guesses={guesses} />
+          <button
+            type="button"
+            className="mx-auto mt-8 flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 select-none"
+            onClick={() => setIsAboutModalOpen(true)}
+          >
+            About this game
+          </button>
+        </div>
+
         <WinModal
           isOpen={isWinModalOpen}
           handleClose={() => setIsWinModalOpen(false)}
@@ -135,14 +147,6 @@ function App() {
           gameStats={stats}
         />
         <AboutModal isOpen={isAboutModalOpen} handleClose={() => setIsAboutModalOpen(false)} />
-
-        <button
-          type="button"
-          className="mx-auto mt-8 flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 select-none"
-          onClick={() => setIsAboutModalOpen(true)}
-        >
-          About this game
-        </button>
         <Alert message="Not enough letters" isOpen={isNotEnoughLetters} />
         <Alert message="Word not found" isOpen={isWordNotFoundAlertOpen} />
         <Alert message={`You lost, the word was ${solution}`} isOpen={isGameLost} />

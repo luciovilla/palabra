@@ -11,12 +11,13 @@ export const AboutModal = ({ isOpen, handleClose }: Props) => {
       <p className="text-sm text-gray-500">
         This is an open source clone of the game Wordle -{' '}
         <a href="https://github.com/luciovilla/wordle" className="underline font-bold">
-          check out the code here
+          check out the code
         </a>{' '}
         and{' '}
         <a href="https://www.powerlanguage.co.uk/wordle/" className="underline font-bold">
-          play the original here
+          play the original game
         </a>
+        .
       </p>
     </BaseModal>
   )

@@ -11,7 +11,7 @@ export const Grid = ({ guesses, currentGuess }: Props) => {
   const empties = guesses.length < 6 ? Array.from(Array(5 - guesses.length)) : []
 
   return (
-    <div className="pb-6">
+    <div className="pb-6 max-w-sm mx-auto">
       {guesses.map((guess, i) => (
         <CompletedRow key={i} guess={guess} />
       ))}

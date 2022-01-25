@@ -9,7 +9,7 @@ export const CurrentRow = ({ guess }: Props) => {
   const emptyCells = Array.from(Array(6 - splitGuess.length))
 
   return (
-    <div className="flex justify-center mb-1">
+    <div className="flex justify-around mb-1">
       {splitGuess.map((letter, i) => (
         <Cell key={i} value={letter} />
       ))}

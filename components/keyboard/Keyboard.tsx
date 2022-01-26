@@ -8,31 +8,36 @@ type Props = {
   onDelete: () => void
   onEnter: () => void
   guesses: string[]
+  isGameWon: boolean
 }
 
-export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
+export const Keyboard = ({ onChar, onDelete, onEnter, guesses, isGameWon }: Props) => {
   const charStatuses = getStatuses(guesses)
 
   const onClick = (value: KeyValue) => {
-    if (value === 'ENTER') {
-      onEnter()
-    } else if (value === 'DELETE') {
-      onDelete()
-    } else {
-      onChar(value)
+    if (!isGameWon) {
+      if (value === 'ENTER') {
+        onEnter()
+      } else if (value === 'DELETE') {
+        onDelete()
+      } else {
+        onChar(value)
+      }
     }
   }
 
   useEffect(() => {
     const listener = (e: KeyboardEvent) => {
-      if (e.code === 'Enter') {
-        onEnter()
-      } else if (e.code === 'Backspace') {
-        onDelete()
-      } else {
-        const key = e.key.toUpperCase()
-        if (key.length === 1 && key >= 'A' && key <= 'Z') {
-          onChar(key)
+      if (!isGameWon) {
+        if (e.code === 'Enter') {
+          onEnter()
+        } else if (e.code === 'Backspace') {
+          onDelete()
+        } else {
+          const key = e.key.toUpperCase()
+          if (key.length === 1 && key >= 'A' && key <= 'Z') {
+            onChar(key)
+          }
         }
       }
     }

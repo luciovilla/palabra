@@ -13,7 +13,7 @@ export const isWinningWord = (word: string) => {
 }
 
 export const getWordOfDay = () => {
-  // 1643173200 == January 26, 2022 12:00 AM Game Epoch timestamp in milliseconds
+  // 1643173200 == January 25, 2022 12:00 AM Game Epoch timestamp in milliseconds
   // Get Epoch time from: https://www.epochconverter.com
   const epochMs = 1643086800000
   const now = Date.now()
@@ -22,7 +22,7 @@ export const getWordOfDay = () => {
 
   return {
     solution: WORDS[index]['word'].toUpperCase(),
-    solutionIndex: 0 + 1
+    solutionIndex: index + 1
   }
 }
 

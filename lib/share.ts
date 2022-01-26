@@ -3,12 +3,7 @@ import { solutionIndex } from './words'
 
 export const shareStatus = (guesses: string[]) => {
   navigator.clipboard.writeText(
-    'Reggaetón Wordle ' +
-      solutionIndex +
-      ' ' +
-      guesses.length +
-      '/6\n\n' +
-      generateEmojiGrid(guesses)
+    'La Palabra ' + solutionIndex + ' ' + guesses.length + '/6\n\n' + generateEmojiGrid(guesses)
   )
 }
 

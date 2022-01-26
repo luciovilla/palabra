@@ -120,7 +120,7 @@ const Index = () => {
           </div>
           <div className="max-w-sm mb-2 sm:mb-8">
             <h2 className="sm:text-lg">
-              Today's word comes from Bad Bunny's song{' '}
+              Today's word appears in Bad Bunny's song{' '}
               <span className="italic font-medium">{wordInfo.song}</span> (
               <a
                 href={wordInfo.spotifyUrl}
@@ -167,11 +167,14 @@ const Index = () => {
         <AboutModal isOpen={isAboutModalOpen} handleClose={() => setIsAboutModalOpen(false)} />
         <Alert message="Not enough letters" isOpen={isNotEnoughLetters} />
         <Alert message="Word not found" isOpen={isWordNotFoundAlertOpen} />
-        <Alert message={`You lost, the word was ${solution}`} isOpen={isGameLost} />
+        <Alert
+          message={`You lost, the word was ${solution}. Try the next one tomorrow!`}
+          isOpen={isGameLost}
+        />
         <Alert message="Game copied to clipboard" isOpen={shareComplete} variant="success" />
       </div>
     </>
   )
 }
 
-export default memo(Index)
+export default Index

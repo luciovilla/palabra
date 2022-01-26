@@ -6,8 +6,8 @@ export const WORDS = [
   },
   {
     word: 'cuando',
-    song: 'Dákiti',
-    spotifyUrl: 'https://open.spotify.com/track/47EiUVwUp4C9fGccaPuUCS'
+    spotifyUrl: 'https://open.spotify.com/track/47EiUVwUp4C9fGccaPuUCS',
+    song: 'Dákiti'
   },
   {
     word: 'sobran',

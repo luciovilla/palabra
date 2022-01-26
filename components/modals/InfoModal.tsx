@@ -18,14 +18,15 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
 
       <div className="flex justify-center mb-1 mt-4">
         <Cell value="P" status="correct" />
-        <Cell value="A" />
-        <Cell value="L" status="present" />
-        <Cell value="A" />
-        <Cell value="B" status="absent" />
+        <Cell value="E" />
         <Cell value="R" />
-        <Cell value="A" status="correct" />
+        <Cell value="R" />
+        <Cell value="E" />
+        <Cell value="O" />
       </div>
-      <p className="text-sm text-gray-500">The letter P is in the word and in the correct spot.</p>
+      <p className="text-sm text-gray-500">
+        The letter <b>P</b> is in the word and in the correct spot.
+      </p>
 
       <div className="flex justify-center mb-1 mt-4">
         <Cell value="T" />
@@ -35,7 +36,9 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         <Cell value="P" />
         <Cell value="O" />
       </div>
-      <p className="text-sm text-gray-500">The letter E is in the word but in the wrong spot.</p>
+      <p className="text-sm text-gray-500">
+        The letter <b>E</b> is in the word but in the wrong spot.
+      </p>
 
       <div className="flex justify-center mb-1 mt-4">
         <Cell value="C" />
@@ -45,7 +48,9 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         <Cell value="J" />
         <Cell value="O" />
       </div>
-      <p className="text-sm text-gray-500">The letter E is not in the word in any spot.</p>
+      <p className="text-sm text-gray-500">
+        The letter <b>E</b> is not in the word in any spot.
+      </p>
     </BaseModal>
   )
 }

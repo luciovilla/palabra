@@ -22,7 +22,7 @@ export const Cell = ({ value, status }: Props) => {
 
   return (
     <div
-      className={`w-full before:content-[''] before:pb-[100%] border-solid border-2 flex items-center justify-center mx-0.5 text-lg font-bold rounded ${classes} ${cellAnimation}`}
+      className={`w-12 sm:w-14 h-12 sm:h-14 border-solid border-2 flex items-center justify-center mx-0.5 text-lg font-bold rounded ${classes} ${cellAnimation}`}
     >
       {textValue}
     </div>

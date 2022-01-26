@@ -2,7 +2,10 @@ import { WORDS } from '../constants/wordlist'
 import { VALIDGUESSES } from '../constants/validGuesses'
 
 export const isWordInWordList = (word: string) => {
-  return WORDS.includes(word.toLowerCase()) || VALIDGUESSES.includes(word.toLowerCase())
+  return (
+    WORDS.some((e) => e.word === word.toLocaleLowerCase()) ||
+    VALIDGUESSES.includes(word.toLowerCase())
+  )
 }
 
 export const isWinningWord = (word: string) => {
@@ -10,15 +13,15 @@ export const isWinningWord = (word: string) => {
 }
 
 export const getWordOfDay = () => {
-  // 1643000400000 == January 24, 2022 5:00 AM Game Epoch timestamp in milliseconds
+  // 1643173200 == January 26, 2022 12:00 AM Game Epoch timestamp in milliseconds
   // Get Epoch time from: https://www.epochconverter.com
-  const epochMs = 1643000400000
+  const epochMs = 1643086800000
   const now = Date.now()
   const msInDay = 86400000
   const index = Math.floor((now - epochMs) / msInDay)
 
   return {
-    solution: WORDS[index].toUpperCase(),
+    solution: WORDS[index]['word'].toUpperCase(),
     solutionIndex: 0 + 1
   }
 }

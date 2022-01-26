@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react'
-import { InformationCircleIcon } from '@heroicons/react/outline'
-import { ChartBarIcon } from '@heroicons/react/outline'
+import { useState, useEffect, memo } from 'react'
 
 import { AboutModal } from '../components/modals/AboutModal'
 import { Alert } from '../components/alerts/Alert'
@@ -14,8 +12,9 @@ import { WinModal } from '../components/modals/WinModal'
 import { isWordInWordList, isWinningWord, solution } from '../lib/words'
 import { addStatsForCompletedGame, loadStats } from '../lib/stats'
 import { loadGameStateFromLocalStorage, saveGameStateToLocalStorage } from '../lib/localStorage'
+import { WORDS } from '../constants/wordlist'
 
-function App() {
+const Index = () => {
   const [currentGuess, setCurrentGuess] = useState('')
   const [isGameWon, setIsGameWon] = useState(false)
   const [isWinModalOpen, setIsWinModalOpen] = useState(false)
@@ -95,25 +94,44 @@ function App() {
       }
     }
   }
+  const wordInfo = WORDS.find((w) => {
+    return w.word === solution.toLocaleLowerCase()
+  })
 
   return (
     <>
       <Meta />
       <div className="py-8 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex flex-col h-screen justify-between">
-        <div className="flex flex-col max-w-md mx-auto items-center mb-1">
-          <div className="flex items-center w-full">
-            <h1 className="text-3xl grow font-bold">Reggaetón Wordle</h1>
-            <InformationCircleIcon
-              className="h-6 w-6 cursor-pointer"
+        <div className="flex flex-col max-w-md mx-auto items-center sm:mb-1">
+          <div className="flex items-center w-full mb-1">
+            <h1 className="text-3xl sm:text-4xl grow font-bold">La Palabra</h1>
+            <button
+              className="p-2 flex items-center justify-center rounded mx-0.5 text-xs font-medium cursor-pointer select-none bg-slate-200 hover:bg-slate-300 active:bg-slate-400"
               onClick={() => setIsInfoModalOpen(true)}
-            />
-            <ChartBarIcon
-              className="h-6 w-6 cursor-pointer"
+            >
+              How to play
+            </button>
+            <button
+              className="p-2 flex items-center justify-center rounded mx-0.5 text-xs font-medium cursor-pointer select-none bg-slate-200 hover:bg-slate-300 active:bg-slate-400"
               onClick={() => setIsStatsModalOpen(true)}
-            />
+            >
+              Stats
+            </button>
           </div>
-          <div className="max-w-md mx-auto mb-4 sm:mb-8">
-            <h2 className="italic">The word is one of Bad Bunny's most used in his lyrics.</h2>
+          <div className="max-w-sm mb-2 sm:mb-8">
+            <h2 className="sm:text-lg">
+              Today's word comes from Bad Bunny's song{' '}
+              <span className="italic font-medium">{wordInfo.song}</span> (
+              <a
+                href={wordInfo.spotifyUrl}
+                className="underline text-gray-500 hover:text-gray-600 transition"
+                target="_blank"
+                rel="noreferrer"
+              >
+                hear it on Spotify
+              </a>
+              ).
+            </h2>
           </div>
         </div>
         <Grid guesses={guesses} currentGuess={currentGuess} />
@@ -121,7 +139,7 @@ function App() {
           <Keyboard onChar={onChar} onDelete={onDelete} onEnter={onEnter} guesses={guesses} />
           <button
             type="button"
-            className="mx-auto mt-8 flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 select-none"
+            className="mx-auto mt-8 flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-black bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 select-none"
             onClick={() => setIsAboutModalOpen(true)}
           >
             About this game
@@ -156,4 +174,4 @@ function App() {
   )
 }
 
-export default App
+export default memo(Index)

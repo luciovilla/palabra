@@ -3,11 +3,11 @@ import Script from 'next/script'
 
 export default function Container() {
   const meta = {
-    title: 'Reggaetón Wordle',
-    description: "Guess the word based on Bad Bunny's lyrics",
+    title: 'La Palabra',
+    description: "A daily word game based on Bad Bunny's lyrics",
     type: 'website',
-    url: 'https://wordle.luciovilla.com/',
-    image: 'https://wordle.luciovilla.com/site.png'
+    url: 'https://palabra.luciovilla.com/',
+    image: 'https://palabra.luciovilla.com/site.png'
   }
 
   return (
@@ -26,7 +26,7 @@ export default function Container() {
         <meta name="twitter:image" content={meta.image} />
       </Head>
       <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-FYFF9N9JPV"
+        src="https://www.googletagmanager.com/gtag/js?id=G-QGB30Q1CH1"
         strategy="afterInteractive"
       />
       <Script id="google-analytics" strategy="afterInteractive">
@@ -34,7 +34,7 @@ export default function Container() {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-FYFF9N9JPV');
+            gtag('config', 'G-QGB30Q1CH1');
         `}
       </Script>
     </>

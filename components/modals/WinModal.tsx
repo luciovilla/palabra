@@ -19,12 +19,9 @@ export const WinModal = ({ isOpen, handleClose, guesses, handleShare }: Props) =
           <CheckIcon className="h-6 w-6 text-green-600" aria-hidden="true" />
         </div>
         <div className="mt-3 text-center sm:mt-5">
-          <Dialog.Title as="h3" className="text-lg leading-6 font-medium text-gray-900">
-            You won!
-          </Dialog.Title>
           <div className="mt-2">
             <MiniGrid guesses={guesses} />
-            <p className="text-sm text-gray-500">Great job.</p>
+            <p className="text-sm text-gray-500">¡Así se hace!</p>
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@ export const WORDS = [
     spotifyUrl: 'https://open.spotify.com/track/2OWVCFTolecLiGZPquvWvT'
   },
   {
-    word: 'perreo',
+    word: 'noches',
     song: 'La Santa',
     spotifyUrl: 'https://open.spotify.com/track/69vlMrzHwATKzupwNcUPyK'
   },

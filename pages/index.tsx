@@ -14,6 +14,10 @@ import { addStatsForCompletedGame, loadStats } from '../lib/stats'
 import { loadGameStateFromLocalStorage, saveGameStateToLocalStorage } from '../lib/localStorage'
 import { WORDS } from '../constants/wordlist'
 
+const wordInfo = WORDS.find((w) => {
+  return w.word === solution.toLocaleLowerCase()
+})
+
 const Index = () => {
   const [currentGuess, setCurrentGuess] = useState('')
   const [isGameWon, setIsGameWon] = useState(false)
@@ -39,7 +43,6 @@ const Index = () => {
     }
     return loaded.guesses
   })
-
   const [stats, setStats] = useState(() => loadStats())
 
   useEffect(() => {
@@ -94,9 +97,6 @@ const Index = () => {
       }
     }
   }
-  const wordInfo = WORDS.find((w) => {
-    return w.word === solution.toLocaleLowerCase()
-  })
 
   return (
     <>

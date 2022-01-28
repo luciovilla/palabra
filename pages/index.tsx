@@ -7,7 +7,7 @@ import { InfoModal } from '../components/modals/InfoModal'
 import { Keyboard } from '../components/keyboard/Keyboard'
 import Meta from '../components/Meta'
 import { StatsModal } from '../components/modals/StatsModal'
-import { WinModal } from '../components/modals/WinModal'
+import { WIN_MESSAGES } from '../constants/strings'
 
 import { isWordInWordList, isWinningWord, solution } from '../lib/words'
 import { addStatsForCompletedGame, loadStats } from '../lib/stats'
@@ -18,17 +18,18 @@ const wordInfo = WORDS.find((w) => {
   return w.word === solution.toLocaleLowerCase()
 })
 
+const ALERT_TIME_MS = 2000
+
 const Index = () => {
   const [currentGuess, setCurrentGuess] = useState('')
+  const [successAlert, setSuccessAlert] = useState('')
   const [isGameWon, setIsGameWon] = useState(false)
-  const [isWinModalOpen, setIsWinModalOpen] = useState(false)
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false)
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false)
   const [isNotEnoughLetters, setIsNotEnoughLetters] = useState(false)
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
   const [isWordNotFoundAlertOpen, setIsWordNotFoundAlertOpen] = useState(false)
   const [isGameLost, setIsGameLost] = useState(false)
-  const [shareComplete, setShareComplete] = useState(false)
   const [guesses, setGuesses] = useState<string[]>(() => {
     const loaded = loadGameStateFromLocalStorage()
     if (loaded?.solution !== solution) {
@@ -51,9 +52,18 @@ const Index = () => {
 
   useEffect(() => {
     if (isGameWon) {
-      setIsWinModalOpen(true)
+      setSuccessAlert(WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)])
+      setTimeout(() => {
+        setSuccessAlert('')
+        setIsStatsModalOpen(true)
+      }, ALERT_TIME_MS)
     }
-  }, [isGameWon])
+    if (isGameLost) {
+      setTimeout(() => {
+        setIsStatsModalOpen(true)
+      }, ALERT_TIME_MS)
+    }
+  }, [isGameWon, isGameLost])
 
   const onChar = (value: string) => {
     if (currentGuess.length < 6 && guesses.length < 6 && !isGameWon) {
@@ -66,18 +76,21 @@ const Index = () => {
   }
 
   const onEnter = () => {
-    if (!(currentGuess.length === 6) && !isGameLost) {
+    if (isGameWon || isGameLost) {
+      return
+    }
+    if (!(currentGuess.length === 6)) {
       setIsNotEnoughLetters(true)
       return setTimeout(() => {
         setIsNotEnoughLetters(false)
-      }, 2000)
+      }, ALERT_TIME_MS)
     }
 
     if (!isWordInWordList(currentGuess)) {
       setIsWordNotFoundAlertOpen(true)
       return setTimeout(() => {
         setIsWordNotFoundAlertOpen(false)
-      }, 2000)
+      }, ALERT_TIME_MS)
     }
 
     const winningWord = isWinningWord(currentGuess)
@@ -152,32 +165,24 @@ const Index = () => {
           </button>
         </div>
 
-        <WinModal
-          isOpen={isWinModalOpen}
-          handleClose={() => setIsWinModalOpen(false)}
-          guesses={guesses}
-          handleShare={() => {
-            setIsWinModalOpen(false)
-            setShareComplete(true)
-            return setTimeout(() => {
-              setShareComplete(false)
-            }, 2000)
-          }}
-        />
         <InfoModal isOpen={isInfoModalOpen} handleClose={() => setIsInfoModalOpen(false)} />
         <StatsModal
           isOpen={isStatsModalOpen}
           handleClose={() => setIsStatsModalOpen(false)}
           gameStats={stats}
+          guesses={guesses}
+          isGameLost={isGameLost}
+          isGameWon={isGameWon}
+          handleShare={() => {
+            setSuccessAlert('Game copied to clipboard')
+            return setTimeout(() => setSuccessAlert(''), ALERT_TIME_MS)
+          }}
         />
         <AboutModal isOpen={isAboutModalOpen} handleClose={() => setIsAboutModalOpen(false)} />
         <Alert message="Not enough letters" isOpen={isNotEnoughLetters} />
         <Alert message="Word not found" isOpen={isWordNotFoundAlertOpen} />
-        <Alert
-          message={`You lost, the word was ${solution}. Try the next one tomorrow!`}
-          isOpen={isGameLost}
-        />
-        <Alert message="Game copied to clipboard" isOpen={shareComplete} variant="success" />
+        <Alert message={`The word was ${solution}.`} isOpen={isGameLost} />
+        <Alert message={successAlert} isOpen={successAlert !== ''} variant="success" />
       </div>
     </>
   )

@@ -133,7 +133,7 @@ const Index = () => {
           </div>
           <div className="max-w-sm mb-2 sm:mb-8">
             <h2 className="sm:text-lg">
-              Today's word appears in Bad Bunny's song{' '}
+              Today&apos;s word appears in Bad Bunny&apos;s song{' '}
               <span className="italic font-medium">{wordInfo.song}</span> (
               <a
                 href={wordInfo.spotifyUrl}

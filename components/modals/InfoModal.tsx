@@ -14,7 +14,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         close your guess was to the word.
       </p>
 
-      <p className="text-sm text-gray-500">The word is pulled from Bad Bunny's lyrics.</p>
+      <p className="text-sm text-gray-500">The word is pulled from Bad Bunny&apos;s lyrics.</p>
 
       <div className="flex justify-center mb-1 mt-4">
         <Cell value="P" status="correct" />

@@ -25,7 +25,7 @@ export const Key = ({ children, status, width = 40, value, onClick }: Props) => 
       setClasses('bg-green-500 hover:bg-green-600 active:bg-green-700 text-white')
     if (status === 'present')
       setClasses('bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 text-white')
-  }, [])
+  }, [status])
 
   return (
     <button

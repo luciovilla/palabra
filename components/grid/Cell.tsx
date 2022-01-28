@@ -18,7 +18,7 @@ export const Cell = ({ value, status }: Props) => {
     if (status === 'present') setClasses('bg-yellow-500 text-white border-yellow-500')
     if (value !== undefined) setCellAnimation('cellAnimation')
     setTextValue(value)
-  }, [])
+  }, [status, value])
 
   return (
     <div

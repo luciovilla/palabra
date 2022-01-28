@@ -45,7 +45,7 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses, isGameWon }: Prop
     return () => {
       window.removeEventListener('keyup', listener)
     }
-  }, [onEnter, onDelete, onChar])
+  }, [onEnter, onDelete, onChar, isGameWon])
 
   return (
     <div>

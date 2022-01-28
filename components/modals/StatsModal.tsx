@@ -1,10 +1,11 @@
 import Countdown from 'react-countdown'
-import { StatBar } from '../stats/StatBar'
-import { Histogram } from '../stats/Histogram'
+
 import { GameStats } from '../../lib/localStorage'
-import { BaseModal } from './BaseModal'
 import { shareStatus } from '../../lib/share'
 import { tomorrow } from '../../lib/words'
+import { Histogram } from '../stats/Histogram'
+import { StatBar } from '../stats/StatBar'
+import { BaseModal } from './BaseModal'
 
 type Props = {
   isOpen: boolean

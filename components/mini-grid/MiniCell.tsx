@@ -1,5 +1,6 @@
-import { CharStatus } from '../../lib/statuses'
 import classnames from 'classnames'
+
+import { CharStatus } from '../../lib/statuses'
 
 type Props = {
   status: CharStatus

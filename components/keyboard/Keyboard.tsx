@@ -1,7 +1,8 @@
+import { useEffect } from 'react'
+
 import { KeyValue } from '../../lib/keyboard'
 import { getStatuses } from '../../lib/statuses'
 import { Key } from './Key'
-import { useEffect } from 'react'
 
 type Props = {
   onChar: (value: string) => void

@@ -1,18 +1,17 @@
 import { useState, useEffect } from 'react'
 
-import { AboutModal } from '../components/modals/AboutModal'
 import { Alert } from '../components/alerts/Alert'
 import { Grid } from '../components/grid/Grid'
-import { InfoModal } from '../components/modals/InfoModal'
 import { Keyboard } from '../components/keyboard/Keyboard'
 import Meta from '../components/Meta'
+import { AboutModal } from '../components/modals/AboutModal'
+import { InfoModal } from '../components/modals/InfoModal'
 import { StatsModal } from '../components/modals/StatsModal'
 import { WIN_MESSAGES } from '../constants/strings'
-
-import { isWordInWordList, isWinningWord, solution } from '../lib/words'
-import { addStatsForCompletedGame, loadStats } from '../lib/stats'
-import { loadGameStateFromLocalStorage, saveGameStateToLocalStorage } from '../lib/localStorage'
 import { WORDS } from '../constants/wordlist'
+import { loadGameStateFromLocalStorage, saveGameStateToLocalStorage } from '../lib/localStorage'
+import { addStatsForCompletedGame, loadStats } from '../lib/stats'
+import { isWordInWordList, isWinningWord, solution } from '../lib/words'
 
 const wordInfo = WORDS.find((w) => {
   return w.word === solution.toLocaleLowerCase()

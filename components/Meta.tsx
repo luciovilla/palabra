@@ -3,8 +3,9 @@ import Script from 'next/script'
 
 export default function Container() {
   const meta = {
-    title: 'La Palabra',
-    description: "A daily word game based on Bad Bunny's lyrics",
+    title: "La Palabra - A daily word game based on Bad Bunny's lyrics",
+    description:
+      'Guess the word in 6 tries while listening to the song it appears in. New challenge available each day.',
     type: 'website',
     url: 'https://palabra.luciovilla.com/',
     image: 'https://palabra.luciovilla.com/site.png'

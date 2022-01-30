@@ -27,20 +27,20 @@ export const WORDS = [
   {
     word: 'tiempo',
     song: 'De Museo',
-    spotifyUrl: 'https://open.spotify.com/track/267NGliXM8YLVZiKAD9Otm'
+    spotifyUrl: 'https://open.spotify.com/album/27ei92dKdKhBVhEVA2ziRR'
   },
   {
-    word: 'tienen',
+    word: 'porque',
     song: 'Hoy Cobré',
     spotifyUrl: 'https://open.spotify.com/track/0tjZv2hChdHZCW1zFXpy1J'
   },
   {
-    word: 'olvido',
+    word: 'diablo',
     song: 'Triste',
     spotifyUrl: 'https://open.spotify.com/track/7narbj6zkSW1SnMhAPep0u'
   },
   {
-    word: 'dinero',
+    word: 'cabaña',
     song: 'Me Llueven',
     spotifyUrl: 'https://open.spotify.com/track/2Iv7PCElmi1dZfzHWzMczA'
   },

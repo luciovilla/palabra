@@ -20,12 +20,14 @@ export const Key = ({ children, status, width = 40, value, onClick }: Props) => 
   }
 
   useEffect(() => {
-    if (!status) setClasses('bg-slate-200 hover:bg-slate-300 active:bg-slate-400')
-    if (status === 'absent') setClasses('bg-slate-400 text-white')
+    if (!status) setClasses('bg-slate-200 hover:bg-slate-300 active:bg-slate-400 dark:bg-gray-400')
+    if (status === 'absent') setClasses('bg-slate-400 dark:bg-gray-600 text-white')
     if (status === 'correct')
-      setClasses('bg-green-500 hover:bg-green-600 active:bg-green-700 text-white')
+      setClasses('bg-green-500 dark:bg-green-700 hover:bg-green-600 active:bg-green-700 text-white')
     if (status === 'present')
-      setClasses('bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 text-white')
+      setClasses(
+        'bg-yellow-500 dark:bg-yellow-700 hover:bg-yellow-600 active:bg-yellow-700 text-white'
+      )
   }, [status])
 
   return (

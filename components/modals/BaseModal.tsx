@@ -35,13 +35,16 @@ export const BaseModal = ({ title, children, isOpen, handleClose }: Props) => {
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <div className="inline-block bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-sm sm:w-full sm:p-6">
+            <div className="inline-block bg-white dark:bg-black rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-sm sm:w-full sm:p-6">
               <div className="absolute right-4 top-4">
                 <XCircleIcon className="h-6 w-6 cursor-pointer" onClick={() => handleClose()} />
               </div>
               <div>
                 <div className="">
-                  <Dialog.Title as="h3" className="text-lg leading-6 font-bold text-gray-900">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-lg leading-6 font-bold text-gray-900 dark:text-gray-100"
+                  >
                     {title}
                   </Dialog.Title>
                   <div className="mt-2">{children}</div>

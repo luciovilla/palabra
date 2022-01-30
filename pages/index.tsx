@@ -7,6 +7,7 @@ import Meta from '../components/Meta'
 import { AboutModal } from '../components/modals/AboutModal'
 import { InfoModal } from '../components/modals/InfoModal'
 import { StatsModal } from '../components/modals/StatsModal'
+import ToggleDarkMode from '../components/ToggleDarkMode'
 import { WIN_MESSAGES } from '../constants/strings'
 import { WORDS } from '../constants/wordlist'
 import { loadGameStateFromLocalStorage, saveGameStateToLocalStorage } from '../lib/localStorage'
@@ -118,17 +119,18 @@ const Index = () => {
           <div className="flex items-center w-full mb-1">
             <h1 className="text-3xl sm:text-4xl grow font-bold">La Palabra</h1>
             <button
-              className="p-2 flex items-center justify-center rounded mx-0.5 text-xs font-medium cursor-pointer select-none bg-slate-200 hover:bg-slate-300 active:bg-slate-400"
+              className="p-2 flex items-center justify-center rounded mx-0.5 text-xs font-medium cursor-pointer select-none bg-slate-200 hover:bg-slate-300 active:bg-slate-400 dark:bg-gray-600 text-gray-800 dark:text-gray-200"
               onClick={() => setIsInfoModalOpen(true)}
             >
               How to play
             </button>
             <button
-              className="p-2 flex items-center justify-center rounded mx-0.5 text-xs font-medium cursor-pointer select-none bg-slate-200 hover:bg-slate-300 active:bg-slate-400"
+              className="p-2 flex items-center justify-center rounded mx-0.5 text-xs font-medium cursor-pointer select-none bg-slate-200 hover:bg-slate-300 active:bg-slate-400 dark:bg-gray-600 text-gray-800 dark:text-gray-200"
               onClick={() => setIsStatsModalOpen(true)}
             >
               Stats
             </button>
+            <ToggleDarkMode />
           </div>
           <div className="max-w-sm mb-2 sm:mb-8">
             <h2 className="sm:text-lg">
@@ -136,7 +138,7 @@ const Index = () => {
               <span className="italic font-medium">{wordInfo.song}</span> (
               <a
                 href={wordInfo.spotifyUrl}
-                className="underline text-gray-500 hover:text-gray-600 transition"
+                className="underline hover:text-gray-600 text-gray-800 dark:text-gray-200"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -155,13 +157,12 @@ const Index = () => {
             guesses={guesses}
             isGameWon={isGameWon}
           />
-          <button
-            type="button"
-            className="mx-auto mt-8 flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-black bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 select-none"
+          <div
+            className="mx-auto w-[118px] mt-8 flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-black dark:text-gray-200 bg-indigo-100 dark:bg-indigo-900 hover:bg-indigo-200 dark:hover:bg-indigo-800 focus:outline-none focus:ring-indigo-500 dark:focus:ring-indigo-700 select-none shadow-none "
             onClick={() => setIsAboutModalOpen(true)}
           >
             About this game
-          </button>
+          </div>
         </div>
 
         <InfoModal isOpen={isInfoModalOpen} handleClose={() => setIsInfoModalOpen(false)} />

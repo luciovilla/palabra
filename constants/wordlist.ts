@@ -55,7 +55,7 @@ export const WORDS = [
     spotifyUrl: 'https://open.spotify.com/track/2JPLbjOn0wPCngEot2STUS'
   },
   {
-    word: 'carajo',
+    word: 'cariño',
     song: 'Te Boté',
     spotifyUrl: 'https://open.spotify.com/track/3V8UKqhEK5zBkBb6d6ub8i'
   },

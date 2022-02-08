@@ -174,8 +174,10 @@ const Index = () => {
           isGameLost={isGameLost}
           isGameWon={isGameWon}
           handleShare={() => {
-            setSuccessAlert('Game copied to clipboard')
-            return setTimeout(() => setSuccessAlert(''), ALERT_TIME_MS)
+            if (!navigator.canShare) {
+              setSuccessAlert('Game copied to clipboard')
+              return setTimeout(() => setSuccessAlert(''), ALERT_TIME_MS)
+            }
           }}
         />
         <AboutModal isOpen={isAboutModalOpen} handleClose={() => setIsAboutModalOpen(false)} />

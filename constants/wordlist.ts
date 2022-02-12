@@ -88,5 +88,15 @@ export const WORDS = [
     word: 'probar',
     song: 'Mia',
     spotifyUrl: 'https://open.spotify.com/track/116H0KvKr2Zl4RPuVBruDO'
+  },
+  {
+    word: 'krippy',
+    song: 'Hablamos Mañana',
+    spotifyUrl: 'https://open.spotify.com/track/1V8XneTrX6kKeoxYbk4x6h'
+  },
+  {
+    word: 'cuando',
+    spotifyUrl: 'https://open.spotify.com/track/47EiUVwUp4C9fGccaPuUCS',
+    song: 'Dákiti'
   }
 ]

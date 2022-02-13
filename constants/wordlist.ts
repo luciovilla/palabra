@@ -98,5 +98,30 @@ export const WORDS = [
     word: 'cuando',
     spotifyUrl: 'https://open.spotify.com/track/47EiUVwUp4C9fGccaPuUCS',
     song: 'Dákiti'
+  },
+  {
+    word: 'primer',
+    spotifyUrl: 'https://open.spotify.com/track/3cYtvtY12Hbo5n7dF4S2X8',
+    song: '6 Rings'
+  },
+  {
+    word: 'chico',
+    spotifyUrl: 'https://open.spotify.com/track/4MZSqgwlE71CWZ6qQ3gkKm',
+    song: '<3'
+  },
+  {
+    word: 'puerto',
+    spotifyUrl: 'https://open.spotify.com/track/2CoMYp2uIKsT09nreEZnZn',
+    song: 'BENDICIONES'
+  },
+  {
+    word: 'aunque',
+    spotifyUrl: 'https://open.spotify.com/track/05bfbizlM5AX6Mf1RRyMho',
+    song: 'AM Remix'
+  },
+  {
+    word: 'siente',
+    spotifyUrl: 'https://open.spotify.com/track/5DDPAkxwe9JxVgsVtiy5ZO',
+    song: 'Diabla (Remix)'
   }
 ]

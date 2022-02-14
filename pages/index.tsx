@@ -8,6 +8,7 @@ import { AboutModal } from '../components/modals/AboutModal'
 import { InfoModal } from '../components/modals/InfoModal'
 import { StatsModal } from '../components/modals/StatsModal'
 import ToggleDarkMode from '../components/ToggleDarkMode'
+import winConfetti from '../components/winConfetti'
 import { WIN_MESSAGES } from '../constants/strings'
 import { WORDS } from '../constants/wordlist'
 import { loadGameStateFromLocalStorage, saveGameStateToLocalStorage } from '../lib/localStorage'
@@ -101,6 +102,7 @@ const Index = () => {
 
       if (winningWord) {
         setStats(addStatsForCompletedGame(stats, guesses.length))
+        winConfetti()
         return setIsGameWon(true)
       }
 

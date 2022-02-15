@@ -105,7 +105,7 @@ export const WORDS = [
     song: '6 Rings'
   },
   {
-    word: 'chico',
+    word: 'basket',
     spotifyUrl: 'https://open.spotify.com/track/4MZSqgwlE71CWZ6qQ3gkKm',
     song: '<3'
   },

@@ -128,5 +128,30 @@ export const WORDS = [
     word: 'dentro',
     spotifyUrl: 'https://open.spotify.com/track/2n7ohqg1s68ToAHh4u9mcW',
     song: 'Vete'
+  },
+  {
+    word: 'mierda',
+    spotifyUrl: 'https://open.spotify.com/track/1khmgu0pveJbkbpbkyvcQv',
+    song: 'La Romana'
+  },
+  {
+    word: 'conejo',
+    spotifyUrl: 'https://open.spotify.com/track/26w9NTiE9NGjW1ZvIOd1So',
+    song: 'BOOKER T'
+  },
+  {
+    word: 'nombre',
+    spotifyUrl: 'https://open.spotify.com/track/1RijmOnza5p9CzaFKr8W1Y',
+    song: 'Soy Peor (Remix)'
+  },
+  {
+    word: 'hablar',
+    spotifyUrl: 'https://open.spotify.com/track/6pZHZndlo57dPCYnvlYFOE',
+    song: 'RLNDT'
+  },
+  {
+    word: 'manera',
+    spotifyUrl: 'https://open.spotify.com/track/4UEuIEv9Wc3wtiWUplGJ7q',
+    song: 'Ser Bichote'
   }
 ]

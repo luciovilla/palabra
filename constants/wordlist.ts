@@ -123,5 +123,10 @@ export const WORDS = [
     word: 'siente',
     spotifyUrl: 'https://open.spotify.com/track/5DDPAkxwe9JxVgsVtiy5ZO',
     song: 'Diabla (Remix)'
+  },
+  {
+    word: 'dentro',
+    spotifyUrl: 'https://open.spotify.com/track/2n7ohqg1s68ToAHh4u9mcW',
+    song: 'Vete'
   }
 ]

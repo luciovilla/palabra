@@ -153,5 +153,10 @@ export const WORDS = [
     word: 'manera',
     spotifyUrl: 'https://open.spotify.com/track/4UEuIEv9Wc3wtiWUplGJ7q',
     song: 'Ser Bichote'
+  },
+  {
+    word: 'normal',
+    spotifyUrl: 'https://open.spotify.com/track/6it15CsDlkqB7N4lF0C1qM',
+    song: 'Caro'
   }
 ]

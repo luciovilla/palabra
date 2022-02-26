@@ -158,5 +158,45 @@ export const WORDS = [
     word: 'normal',
     spotifyUrl: 'https://open.spotify.com/track/6it15CsDlkqB7N4lF0C1qM',
     song: 'Caro'
+  },
+  {
+    word: 'perrea',
+    spotifyUrl: 'https://open.spotify.com/track/5mj8WVFcKdGA8p9HWGTSLc',
+    song: 'Cuando Perriabas'
+  },
+  {
+    word: 'hablen',
+    spotifyUrl: 'https://open.spotify.com/track/26w9NTiE9NGjW1ZvIOd1So',
+    song: 'BOOKER T'
+  },
+  {
+    word: 'vuelvo',
+    spotifyUrl: 'https://open.spotify.com/track/1JxhrUWZjuI8AOjDJ1JpMN',
+    song: 'Soy Peor'
+  },
+  {
+    word: 'puesto',
+    spotifyUrl: 'https://open.spotify.com/track/4r9jkMEnArtWGH2rL2FZl0',
+    song: 'A Tu Merced'
+  },
+  {
+    word: 'cuarto',
+    spotifyUrl: 'https://open.spotify.com/track/69ZaPBHhRMRDjRpW1ivnOU',
+    song: 'Como Antes'
+  },
+  {
+    word: 'llueve',
+    spotifyUrl: 'https://open.spotify.com/track/2Iv7PCElmi1dZfzHWzMczA',
+    song: 'Me Llueven'
+  },
+  {
+    word: 'olvido',
+    spotifyUrl: 'https://open.spotify.com/track/3dT84RNzEU9Tde90kzg0wM',
+    song: 'Desde el Corazon'
+  },
+  {
+    word: 'yankee',
+    spotifyUrl: 'https://open.spotify.com/track/6ipDE6Y0xrjEeaBTuPfW1K',
+    song: 'Tú No Metes Cabra (Remix)'
   }
 ]

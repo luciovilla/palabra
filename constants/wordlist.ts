@@ -198,5 +198,15 @@ export const WORDS = [
     word: 'yankee',
     spotifyUrl: 'https://open.spotify.com/track/6ipDE6Y0xrjEeaBTuPfW1K',
     song: 'Tú No Metes Cabra (Remix)'
+  },
+  {
+    word: 'diabla',
+    spotifyUrl: 'https://open.spotify.com/track/0SqqAgdovOE24BzxIClpjw',
+    song: 'Yo Perreo Sola'
+  },
+  {
+    word: 'camino',
+    spotifyUrl: 'https://open.spotify.com/track/1RijmOnza5p9CzaFKr8W1Y',
+    song: 'Soy Peor (Remix)'
   }
 ]

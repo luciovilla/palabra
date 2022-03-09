@@ -208,5 +208,30 @@ export const WORDS = [
     word: 'camino',
     spotifyUrl: 'https://open.spotify.com/track/1RijmOnza5p9CzaFKr8W1Y',
     song: 'Soy Peor (Remix)'
+  },
+  {
+    word: 'frente',
+    spotifyUrl: 'https://open.spotify.com/track/3KJ3opyV29269SXkPrc19l',
+    song: '120'
+  },
+  {
+    word: 'pienso',
+    spotifyUrl: 'https://open.spotify.com/track/1JxhrUWZjuI8AOjDJ1JpMN',
+    song: 'Soy Peor'
+  },
+  {
+    word: 'afuera',
+    spotifyUrl: 'https://open.spotify.com/track/2n7ohqg1s68ToAHh4u9mcW',
+    song: 'Vete'
+  },
+  {
+    word: 'anoche',
+    spotifyUrl: 'https://open.spotify.com/track/4vCAzANUWDE24URV6wQ4ra',
+    song: 'Otra Noche en Miami'
+  },
+  {
+    word: 'entera',
+    spotifyUrl: 'https://open.spotify.com/track/7sOfmPd18RWp3FoCzpa7Kw',
+    song: 'Soliá'
   }
 ]

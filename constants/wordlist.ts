@@ -233,5 +233,15 @@ export const WORDS = [
     word: 'entera',
     spotifyUrl: 'https://open.spotify.com/track/7sOfmPd18RWp3FoCzpa7Kw',
     song: 'Soliá'
+  },
+  {
+    word: 'debajo',
+    spotifyUrl: 'https://open.spotify.com/track/5jGUJXnELDaDTgiRjD9lsg',
+    song: '200 MPH'
+  },
+  {
+    word: 'entera',
+    spotifyUrl: 'https://open.spotify.com/track/116H0KvKr2Zl4RPuVBruDO',
+    song: 'MIA'
   }
 ]

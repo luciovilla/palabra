@@ -135,38 +135,45 @@ const Index = () => {
             <ToggleDarkMode />
           </div>
           <div className="max-w-sm mb-2 sm:mb-8">
-            <h2 className="sm:text-lg">
-              Today&apos;s word appears in Bad Bunny&apos;s song{' '}
-              <span className="italic font-medium">{wordInfo.song}</span> (
-              <a
-                href={wordInfo.spotifyUrl}
-                className="underline hover:text-gray-600 text-gray-800 dark:text-gray-200"
-                target="_blank"
-                rel="noreferrer"
-              >
-                hear it on Spotify
-              </a>
-              ).
-            </h2>
+            {wordInfo?.song && (
+              <h2 className="sm:text-lg">
+                Today&apos;s word appears in Bad Bunny&apos;s song{' '}
+                <span className="italic font-medium">{wordInfo.song}</span> (
+                <a
+                  href={wordInfo.spotifyUrl}
+                  className="underline hover:text-gray-600 text-gray-800 dark:text-gray-200"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  hear it on Spotify
+                </a>
+                ).
+              </h2>
+            )}
           </div>
         </div>
-        <Grid guesses={guesses} currentGuess={currentGuess} />
-        <div>
-          <Keyboard
-            onChar={onChar}
-            onDelete={onDelete}
-            onEnter={onEnter}
-            guesses={guesses}
-            isGameWon={isGameWon}
-          />
-          <div
-            className="mx-auto w-[118px] mt-8 flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-black dark:text-gray-200 bg-indigo-100 dark:bg-indigo-900 hover:bg-indigo-200 dark:hover:bg-indigo-800 focus:outline-none focus:ring-indigo-500 dark:focus:ring-indigo-700 select-none shadow-none "
-            onClick={() => setIsAboutModalOpen(true)}
-          >
-            About this game
-          </div>
+        {wordInfo?.song ? (
+          <>
+            <Grid guesses={guesses} currentGuess={currentGuess} />
+            <div>
+              <Keyboard
+                onChar={onChar}
+                onDelete={onDelete}
+                onEnter={onEnter}
+                guesses={guesses}
+                isGameWon={isGameWon}
+              />
+            </div>
+          </>
+        ) : (
+          <h2 className="sm:text-xl text-center">Working on adding more words. Espérame please.</h2>
+        )}
+        <div
+          className="mx-auto w-[118px] mt-8 flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-black dark:text-gray-200 bg-indigo-100 dark:bg-indigo-900 hover:bg-indigo-200 dark:hover:bg-indigo-800 focus:outline-none focus:ring-indigo-500 dark:focus:ring-indigo-700 select-none shadow-none "
+          onClick={() => setIsAboutModalOpen(true)}
+        >
+          About this game
         </div>
-
         <InfoModal isOpen={isInfoModalOpen} handleClose={() => setIsInfoModalOpen(false)} />
         <StatsModal
           isOpen={isStatsModalOpen}

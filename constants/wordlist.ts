@@ -243,5 +243,30 @@ export const WORDS = [
     word: 'entera',
     spotifyUrl: 'https://open.spotify.com/track/116H0KvKr2Zl4RPuVBruDO',
     song: 'MIA'
+  },
+  {
+    word: 'puesta',
+    spotifyUrl: 'https://open.spotify.com/track/3kG1jgWIDmjJkXhOiOmioO',
+    song: 'Dime Si Te Acuerdas'
+  },
+  {
+    word: 'parece',
+    spotifyUrl: 'https://open.spotify.com/track/6pZHZndlo57dPCYnvlYFOE',
+    song: 'RLNDT'
+  },
+  {
+    word: 'querer',
+    spotifyUrl: 'https://open.spotify.com/track/0FktnzDqjClqU6iqOZVEs2',
+    song: 'BYE ME FUI'
+  },
+  {
+    word: 'gustan',
+    spotifyUrl: 'https://open.spotify.com/track/1zaDh3qaGSeSmulNyWlUxm',
+    song: 'SI ELLA SALE'
+  },
+  {
+    word: 'puerto',
+    spotifyUrl: 'https://open.spotify.com/track/7b59ZUw0TkGZuE0HNeiuc4',
+    song: 'Me Llueven 3.0'
   }
 ]

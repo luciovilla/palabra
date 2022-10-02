@@ -33,7 +33,7 @@ const Index = () => {
   const [isGameLost, setIsGameLost] = useState(false)
   const [guesses, setGuesses] = useState<string[]>(() => {
     const loaded = loadGameStateFromLocalStorage()
-    if (loaded?.solution !== solution) {
+    if (!loaded?.guesses) {
       return []
     }
     const gameWasWon = loaded.guesses.includes(solution)

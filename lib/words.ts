@@ -13,7 +13,7 @@ export const isWinningWord = (word: string) => {
 }
 
 export const getWordOfDay = () => {
-  const epochMs = new Date('March 23, 2022 00:00:00').valueOf()
+  const epochMs = new Date('October 2, 2022 00:00:00').valueOf()
   const now = Date.now()
   const msInDay = 86400000
   const index = Math.floor((now - epochMs) / msInDay)

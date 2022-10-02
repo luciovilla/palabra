@@ -48,7 +48,7 @@ const Index = () => {
   const [stats, setStats] = useState(() => loadStats())
 
   useEffect(() => {
-    saveGameStateToLocalStorage({ guesses, solution })
+    saveGameStateToLocalStorage({ guesses })
   }, [guesses])
 
   useEffect(() => {

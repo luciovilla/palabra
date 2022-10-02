@@ -60,8 +60,7 @@ export const getGuessStatuses = (guess: string): CharStatus[] => {
   const splitSolution = solution.split('')
   const splitGuess = guess.split('')
 
-  const solutionCharsTaken = splitSolution.map((_) => false)
-
+  const solutionCharsTaken = splitSolution.map((solution) => !solution)
   const statuses: CharStatus[] = Array.from(Array(guess.length))
 
   // handle all correct cases first

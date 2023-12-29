@@ -3,7 +3,7 @@
   "editor.formatOnSave": true,
   "eslint.codeActionsOnSave.mode": "problems",
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    "source.fixAll": "explicit"
   },
   "editor.defaultFormatter": "dbaeumer.vscode-eslint"
 }

@@ -12,6 +12,7 @@
   "dependencies": {
     "@headlessui/react": "^2.2.9",
     "@heroicons/react": "^2.2.0",
+    "@radix-ui/react-dialog": "^1.1.15",
     "canvas-confetti": "^1.9.4",
     "class-variance-authority": "^0.7.1",
     "classnames": "^2.5.1",

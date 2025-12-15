@@ -9,12 +9,14 @@ type Props = {
 export const InfoModal = ({ isOpen, handleClose }: Props) => {
   return (
     <BaseModal title="How to play" isOpen={isOpen} handleClose={handleClose}>
-      <p className="text-sm text-slate-300 mb-2">
+      <p className="text-sm text-muted-foreground mb-2">
         Guess the word in 6 tries. After each guess, the color of the tiles will change to show how
         close your guess was to the word.
       </p>
 
-      <p className="text-sm text-slate-300">The word is pulled from Bad Bunny&apos;s lyrics.</p>
+      <p className="text-sm text-muted-foreground">
+        The word is pulled from Bad Bunny&apos;s lyrics.
+      </p>
 
       <div className="flex justify-center mb-1 mt-4">
         <Cell value="P" status="correct" />
@@ -24,7 +26,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         <Cell value="E" />
         <Cell value="O" />
       </div>
-      <p className="text-sm text-slate-300">
+      <p className="text-sm text-muted-foreground">
         The letter <b>P</b> is in the word and in the correct spot.
       </p>
 
@@ -36,7 +38,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         <Cell value="P" />
         <Cell value="O" />
       </div>
-      <p className="text-sm text-slate-300">
+      <p className="text-sm text-muted-foreground">
         The letter <b>E</b> is in the word but in the wrong spot.
       </p>
 
@@ -48,7 +50,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         <Cell value="J" />
         <Cell value="O" />
       </div>
-      <p className="text-sm text-slate-300">
+      <p className="text-sm text-muted-foreground">
         The letter <b>E</b> is not in the word in any spot.
       </p>
     </BaseModal>

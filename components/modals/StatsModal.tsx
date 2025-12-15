@@ -35,14 +35,14 @@ export const StatsModal = ({
   return (
     <BaseModal title="Statistics" isOpen={isOpen} handleClose={handleClose}>
       <StatBar gameStats={gameStats} />
-      <h4 className="text-lg leading-6 font-medium text-slate-200">Guess Distribution</h4>
+      <h4 className="text-lg leading-6 font-medium text-foreground">Guess Distribution</h4>
       <Histogram gameStats={gameStats} />
       {(isGameLost || isGameWon) && (
         <div className="mt-5 sm:mt-6 columns-2">
           <div>
-            <h5 className="text-slate-300">New word in</h5>
+            <h5 className="text-muted-foreground">New word in</h5>
             <Countdown
-              className="text-lg font-medium text-white"
+              className="text-lg font-medium text-foreground"
               date={tomorrow}
               daysInHours={true}
             />

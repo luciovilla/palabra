@@ -1,9 +1,10 @@
+'use client'
+
 import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 import { Grid } from '../components/grid/Grid'
 import { Intro } from '../components/Intro'
 import { Keyboard } from '../components/keyboard/Keyboard'
-import Meta from '../components/Meta'
 import { AboutModal } from '../components/modals/AboutModal'
 import { InfoModal } from '../components/modals/InfoModal'
 import { StatsModal } from '../components/modals/StatsModal'
@@ -20,7 +21,7 @@ const wordInfo = WORDS.find((w) => {
 
 const ALERT_TIME_MS = 2000
 
-const Index = () => {
+const Home = () => {
   const [hasStarted, setHasStarted] = useState(false)
   const [currentGuess, setCurrentGuess] = useState('')
   const [isGameWon, setIsGameWon] = useState(false)
@@ -29,30 +30,69 @@ const Index = () => {
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
   const [isGameLost, setIsGameLost] = useState(false)
   const [guesses, setGuesses] = useState<string[]>(() => {
-    const loaded = loadGameStateFromLocalStorage()
-    if (!loaded?.guesses) {
-      return []
+    // Only access localStorage in client
+    if (typeof window !== 'undefined') {
+      const loaded = loadGameStateFromLocalStorage()
+      if (!loaded?.guesses) {
+        return []
+      }
+      const gameWasWon = loaded.guesses.includes(solution)
+      if (gameWasWon) {
+        setIsGameWon(true)
+      }
+      if (loaded.guesses.length === 6 && !gameWasWon) {
+        setIsGameLost(true)
+      }
+      return loaded.guesses
     }
-    const gameWasWon = loaded.guesses.includes(solution)
-    if (gameWasWon) {
-      setIsGameWon(true)
-    }
-    if (loaded.guesses.length === 6 && !gameWasWon) {
-      setIsGameLost(true)
-    }
-    return loaded.guesses
+    return []
   })
-  const [stats, setStats] = useState(() => loadStats())
+  const [stats, setStats] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return loadStats()
+    }
+    return {
+      winDistribution: [],
+      gamesFailed: 0,
+      currentStreak: 0,
+      bestStreak: 0,
+      totalGames: 0,
+      successRate: 0
+    }
+  })
+
+  // Since we are hydrating, we might need a useEffect to set initial state from localStorage if not done above.
+  // Actually, useState initializer runs on client, so accessing localStorage there mirrors logic.
+  // However, hydration mismatch might occur if we render different content based on localStorage.
+  // But here we set state.
+  // Wait, if I read localStorage in useState initializer, it might differ from server render (which is empty).
+  // Next.js warns about this.
+  // Better to use useEffect to load state.
+
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => {
+    setMounted(true)
+    const loaded = loadGameStateFromLocalStorage()
+    if (loaded?.guesses) {
+      setGuesses(loaded.guesses)
+      const gameWasWon = loaded.guesses.includes(solution)
+      if (gameWasWon) setIsGameWon(true)
+      if (loaded.guesses.length === 6 && !gameWasWon) setIsGameLost(true)
+    }
+    setStats(loadStats())
+  }, [])
 
   useEffect(() => {
-    if (guesses.length > 0) {
+    if (mounted && guesses.length > 0) {
       setHasStarted(true)
     }
-  }, [guesses.length])
+  }, [guesses.length, mounted])
 
   useEffect(() => {
-    saveGameStateToLocalStorage({ guesses })
-  }, [guesses])
+    if (mounted) {
+      saveGameStateToLocalStorage({ guesses })
+    }
+  }, [guesses, mounted])
 
   useEffect(() => {
     if (isGameWon) {
@@ -94,21 +134,24 @@ const Index = () => {
     const winningWord = isWinningWord(currentGuess)
 
     if (currentGuess.length === 6 && guesses.length < 6 && !isGameWon) {
-      setGuesses([...guesses, currentGuess])
+      const newGuesses = [...guesses, currentGuess]
+      setGuesses(newGuesses)
       setCurrentGuess('')
 
       if (winningWord) {
-        setStats(addStatsForCompletedGame(stats, guesses.length))
+        setStats(addStatsForCompletedGame(stats, newGuesses.length))
         winConfetti()
         return setIsGameWon(true)
       }
 
-      if (guesses.length === 5) {
-        setStats(addStatsForCompletedGame(stats, guesses.length + 1))
+      if (newGuesses.length === 6) {
+        setStats(addStatsForCompletedGame(stats, newGuesses.length + 1))
         setIsGameLost(true)
       }
     }
   }
+
+  if (!mounted) return null
 
   if (!hasStarted) {
     return <Intro onPlay={() => setHasStarted(true)} />
@@ -116,8 +159,6 @@ const Index = () => {
 
   return (
     <div className="flex flex-col h-screen bg-slate-900 text-white relative overflow-hidden">
-      <Meta />
-
       <div className="pb-8 pt-4 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex flex-col h-full justify-between relative z-10 w-full">
         <div className="flex flex-col max-w-md mx-auto items-center sm:mb-1 w-full">
           <div className="flex items-center w-full mb-1 justify-between">
@@ -199,4 +240,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default Home

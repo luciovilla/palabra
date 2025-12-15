@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import type { KeyValue } from '../../lib/keyboard'
 import { getStatuses } from '../../lib/statuses'
 import { Key } from './Key'
@@ -12,6 +12,7 @@ type Props = {
 }
 
 export const Keyboard = ({ onChar, onDelete, onEnter, guesses, isGameWon }: Props) => {
+  const [isDeadKey, setIsDeadKey] = useState(false)
   const charStatuses = getStatuses(guesses)
 
   const onClick = (value: KeyValue) => {
@@ -29,13 +30,27 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses, isGameWon }: Prop
   useEffect(() => {
     const listener = (e: KeyboardEvent) => {
       if (!isGameWon) {
+        if (e.key === 'Dead') {
+          setIsDeadKey(true)
+          return
+        }
+
         if (e.code === 'Enter') {
+          setIsDeadKey(false)
           onEnter()
         } else if (e.code === 'Backspace') {
+          setIsDeadKey(false)
           onDelete()
         } else {
           const key = e.key.toUpperCase()
-          if (key.length === 1 && key >= 'A' && key <= 'Z') {
+          if (isDeadKey && key === 'N') {
+            setIsDeadKey(false)
+            onChar('Ñ')
+            return
+          }
+
+          if (key.length === 1 && ((key >= 'A' && key <= 'Z') || key === 'Ñ')) {
+            setIsDeadKey(false)
             onChar(key)
           }
         }
@@ -45,10 +60,13 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses, isGameWon }: Prop
     return () => {
       window.removeEventListener('keyup', listener)
     }
-  }, [onEnter, onDelete, onChar, isGameWon])
+  }, [onEnter, onDelete, onChar, isGameWon, isDeadKey])
 
   return (
     <div>
+      <div className="flex justify-center mb-1 h-6">
+        {isDeadKey && <span className="text-2xl font-bold text-slate-200 animate-pulse">˜</span>}
+      </div>
       <div className="flex justify-center mb-1">
         <Key value="Q" onClick={onClick} status={charStatuses.Q} />
         <Key value="W" onClick={onClick} status={charStatuses.W} />

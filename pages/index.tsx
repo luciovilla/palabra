@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Alert } from '../components/alerts/Alert'
+import { toast } from 'sonner'
 import { Grid } from '../components/grid/Grid'
 import { Intro } from '../components/Intro'
 import { Keyboard } from '../components/keyboard/Keyboard'
@@ -23,13 +23,10 @@ const ALERT_TIME_MS = 2000
 const Index = () => {
   const [hasStarted, setHasStarted] = useState(false)
   const [currentGuess, setCurrentGuess] = useState('')
-  const [successAlert, setSuccessAlert] = useState('')
   const [isGameWon, setIsGameWon] = useState(false)
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false)
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false)
-  const [isNotEnoughLetters, setIsNotEnoughLetters] = useState(false)
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
-  const [isWordNotFoundAlertOpen, setIsWordNotFoundAlertOpen] = useState(false)
   const [isGameLost, setIsGameLost] = useState(false)
   const [guesses, setGuesses] = useState<string[]>(() => {
     const loaded = loadGameStateFromLocalStorage()
@@ -59,13 +56,13 @@ const Index = () => {
 
   useEffect(() => {
     if (isGameWon) {
-      setSuccessAlert(WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)])
+      toast.success(WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)])
       setTimeout(() => {
-        setSuccessAlert('')
         setIsStatsModalOpen(true)
       }, ALERT_TIME_MS)
     }
     if (isGameLost) {
+      toast.info(`The word was ${solution}.`)
       setTimeout(() => {
         setIsStatsModalOpen(true)
       }, ALERT_TIME_MS)
@@ -87,17 +84,11 @@ const Index = () => {
       return
     }
     if (!(currentGuess.length === 6)) {
-      setIsNotEnoughLetters(true)
-      return setTimeout(() => {
-        setIsNotEnoughLetters(false)
-      }, ALERT_TIME_MS)
+      return toast.warning('Not enough letters')
     }
 
     if (!isWordInWordList(currentGuess)) {
-      setIsWordNotFoundAlertOpen(true)
-      return setTimeout(() => {
-        setIsWordNotFoundAlertOpen(false)
-      }, ALERT_TIME_MS)
+      return toast.error('Word not found')
     }
 
     const winningWord = isWinningWord(currentGuess)
@@ -146,7 +137,6 @@ const Index = () => {
                     >
                       {wordInfo.song}
                     </a>
-                    .
                   </h2>
                 )}
               </div>
@@ -199,16 +189,11 @@ const Index = () => {
           isGameWon={isGameWon}
           handleShare={() => {
             if (!navigator.canShare) {
-              setSuccessAlert('Game copied to clipboard')
-              return setTimeout(() => setSuccessAlert(''), ALERT_TIME_MS)
+              toast.success('Game copied to clipboard')
             }
           }}
         />
         <AboutModal isOpen={isAboutModalOpen} handleClose={() => setIsAboutModalOpen(false)} />
-        <Alert message="Not enough letters" isOpen={isNotEnoughLetters} />
-        <Alert message="Word not found" isOpen={isWordNotFoundAlertOpen} />
-        <Alert message={`The word was ${solution}.`} isOpen={isGameLost} />
-        <Alert message={successAlert} isOpen={successAlert !== ''} variant="success" />
       </div>
     </div>
   )

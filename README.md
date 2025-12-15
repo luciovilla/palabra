@@ -1,6 +1,6 @@
 # La Palabra
 
-A clone of the popular game Wordle made using Next.js, TypeScript and Tailwind CSS where the daily word is pulled from Bad Bunny's lyrics (Python notebook coming soon).
+A clone of the popular game Wordle made using Next.js, TypeScript and Tailwind CSS where the daily word is pulled from Bad Bunny's lyrics.
 
 - Go play the real Wordle [here](https://www.powerlanguage.co.uk/wordle/)
 - Read the story behind it [here](https://www.nytimes.com/2022/01/03/technology/wordle-word-game-creator.html)

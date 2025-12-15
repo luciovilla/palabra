@@ -9,13 +9,13 @@ type Props = {
 export const InfoModal = ({ isOpen, handleClose }: Props) => {
   return (
     <BaseModal title="How to play" isOpen={isOpen} handleClose={handleClose}>
-      <p className="text-sm text-muted-foreground mb-2">
-        Guess the word in 6 tries. After each guess, the color of the tiles will change to show how
-        close your guess was to the word.
+      <p className="text-sm text-muted-foreground mb-4">
+        Guess the word in 6 tries. The word is related to Bad Bunny lyrics.
       </p>
 
-      <p className="text-sm text-muted-foreground">
-        The word is pulled from Bad Bunny&apos;s lyrics.
+      <p className="text-sm text-muted-foreground mb-4">
+        After each guess, the color of the tiles will change to show how close your guess was to the
+        word.
       </p>
 
       <div className="flex justify-center mb-1 mt-4">
@@ -52,6 +52,10 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
       </div>
       <p className="text-sm text-muted-foreground">
         The letter <b>E</b> is not in the word in any spot.
+      </p>
+
+      <p className="text-sm text-muted-foreground mt-4 italic">
+        A new puzzle is released daily at midnight.
       </p>
     </BaseModal>
   )

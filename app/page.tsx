@@ -12,7 +12,12 @@ import { StatsModal } from '../components/modals/StatsModal'
 import winConfetti from '../components/winConfetti'
 import { WIN_MESSAGES } from '../constants/strings'
 import { WORDS } from '../constants/wordlist'
-import { loadGameStateFromLocalStorage, saveGameStateToLocalStorage } from '../lib/localStorage'
+import {
+  loadGameStateFromLocalStorage,
+  loadVisitedFromLocalStorage,
+  saveGameStateToLocalStorage,
+  saveVisitedToLocalStorage
+} from '../lib/localStorage'
 import { addStatsForCompletedGame, loadStats } from '../lib/stats'
 import { isWinningWord, isWordInWordList, solution } from '../lib/words'
 
@@ -98,6 +103,16 @@ const Home = () => {
       saveGameStateToLocalStorage({ guesses })
     }
   }, [guesses, mounted])
+
+  useEffect(() => {
+    if (hasStarted) {
+      const hasVisited = loadVisitedFromLocalStorage()
+      if (!hasVisited) {
+        setIsInfoModalOpen(true)
+        saveVisitedToLocalStorage()
+      }
+    }
+  }, [hasStarted])
 
   useEffect(() => {
     if (isGameWon) {

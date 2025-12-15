@@ -6,7 +6,7 @@ type Props = {
 
 const StatItem = ({ label, value }: { label: string; value: string | number }) => {
   return (
-    <div className="items-center justify-center text-center m-1 w-1/4">
+    <div className="items-center justify-center text-center m-1 w-1/4 text-slate-300">
       <div className="text-3xl">{value}</div>
       <div className="text-xs">{label}</div>
     </div>

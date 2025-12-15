@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react'
-
 import { Alert } from '../components/alerts/Alert'
 import { Grid } from '../components/grid/Grid'
+import { Intro } from '../components/Intro'
 import { Keyboard } from '../components/keyboard/Keyboard'
 import Meta from '../components/Meta'
 import { AboutModal } from '../components/modals/AboutModal'
 import { InfoModal } from '../components/modals/InfoModal'
 import { StatsModal } from '../components/modals/StatsModal'
-import ToggleDarkMode from '../components/ToggleDarkMode'
 import winConfetti from '../components/winConfetti'
 import { WIN_MESSAGES } from '../constants/strings'
 import { WORDS } from '../constants/wordlist'
@@ -22,6 +21,7 @@ const wordInfo = WORDS.find((w) => {
 const ALERT_TIME_MS = 2000
 
 const Index = () => {
+  const [hasStarted, setHasStarted] = useState(false)
   const [currentGuess, setCurrentGuess] = useState('')
   const [successAlert, setSuccessAlert] = useState('')
   const [isGameWon, setIsGameWon] = useState(false)
@@ -46,6 +46,12 @@ const Index = () => {
     return loaded.guesses
   })
   const [stats, setStats] = useState(() => loadStats())
+
+  useEffect(() => {
+    if (guesses.length > 0) {
+      setHasStarted(true)
+    }
+  }, [guesses.length])
 
   useEffect(() => {
     saveGameStateToLocalStorage({ guesses })
@@ -113,49 +119,58 @@ const Index = () => {
     }
   }
 
+  if (!hasStarted) {
+    return <Intro onPlay={() => setHasStarted(true)} />
+  }
+
   return (
-    <>
+    <div className="flex flex-col h-screen bg-slate-900 text-white relative overflow-hidden">
       <Meta />
-      <div className="py-8 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex flex-col h-screen justify-between">
-        <div className="flex flex-col max-w-md mx-auto items-center sm:mb-1">
-          <div className="flex items-center w-full mb-1">
-            <h1 className="text-3xl sm:text-4xl grow font-bold">La Palabra</h1>
-            <button
-              className="p-2 flex items-center justify-center rounded mx-0.5 text-xs font-medium cursor-pointer select-none bg-slate-200 hover:bg-slate-300 active:bg-slate-400 dark:bg-gray-600 text-gray-800 dark:text-gray-200"
-              onClick={() => setIsInfoModalOpen(true)}
-            >
-              How to play
-            </button>
-            <button
-              className="p-2 flex items-center justify-center rounded mx-0.5 text-xs font-medium cursor-pointer select-none bg-slate-200 hover:bg-slate-300 active:bg-slate-400 dark:bg-gray-600 text-gray-800 dark:text-gray-200"
-              onClick={() => setIsStatsModalOpen(true)}
-            >
-              Stats
-            </button>
-            <ToggleDarkMode />
-          </div>
-          <div className="max-w-sm mb-2 sm:mb-8">
-            {wordInfo?.song && (
-              <h2 className="sm:text-lg">
-                Today&apos;s word appears in Bad Bunny&apos;s song{' '}
-                <span className="italic font-medium">{wordInfo.song}</span> (
-                <a
-                  href={wordInfo.spotifyUrl}
-                  className="underline hover:text-gray-600 text-gray-800 dark:text-gray-200"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  hear it on Spotify
-                </a>
-                ).
-              </h2>
-            )}
+
+      <div className="pb-8 pt-4 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex flex-col h-full justify-between relative z-10 w-full">
+        <div className="flex flex-col max-w-md mx-auto items-center sm:mb-1 w-full">
+          <div className="flex items-center w-full mb-1 justify-between">
+            <div>
+              <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-200 drop-shadow-sm">
+                La Palabra
+              </h1>
+              <div className="max-w-sm mb-2 sm:mb-8 w-full">
+                {wordInfo?.song && (
+                  <h2 className="text-slate-300 text-sm">
+                    Today's word appears in{' '}
+                    <a
+                      href={wordInfo.spotifyUrl}
+                      className=" hover:text-green-300 underline text-sm"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {wordInfo.song}
+                    </a>
+                    .
+                  </h2>
+                )}
+              </div>
+            </div>
+            <div className="flex items-center self-start space-x-2">
+              <button
+                className="p-2 flex items-center justify-center rounded-lg text-xs font-bold cursor-pointer select-none bg-slate-800 hover:bg-slate-700 text-slate-200 transition-colors border border-slate-700"
+                onClick={() => setIsInfoModalOpen(true)}
+              >
+                Help
+              </button>
+              <button
+                className="p-2 flex items-center justify-center rounded-lg text-xs font-bold cursor-pointer select-none bg-slate-800 hover:bg-slate-700 text-slate-200 transition-colors border border-slate-700"
+                onClick={() => setIsStatsModalOpen(true)}
+              >
+                Stats
+              </button>
+            </div>
           </div>
         </div>
         {wordInfo?.song ? (
           <>
             <Grid guesses={guesses} currentGuess={currentGuess} />
-            <div>
+            <div className="w-full max-w-lg mx-auto">
               <Keyboard
                 onChar={onChar}
                 onDelete={onDelete}
@@ -169,7 +184,7 @@ const Index = () => {
           <h2 className="sm:text-xl text-center">Working on adding more words. Espérame please.</h2>
         )}
         <div
-          className="mx-auto w-[118px] mt-8 flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-black dark:text-gray-200 bg-indigo-100 dark:bg-indigo-900 hover:bg-indigo-200 dark:hover:bg-indigo-800 focus:outline-none focus:ring-indigo-500 dark:focus:ring-indigo-700 select-none shadow-none "
+          className="mx-auto mt-8 flex items-center px-4 py-2 border border-slate-700 text-xs font-medium rounded-full text-slate-400 bg-slate-800/50 hover:bg-slate-800 hover:text-white transition-colors cursor-pointer select-none backdrop-blur-sm"
           onClick={() => setIsAboutModalOpen(true)}
         >
           About this game
@@ -195,7 +210,7 @@ const Index = () => {
         <Alert message={`The word was ${solution}.`} isOpen={isGameLost} />
         <Alert message={successAlert} isOpen={successAlert !== ''} variant="success" />
       </div>
-    </>
+    </div>
   )
 }
 

@@ -8,13 +8,19 @@ type Props = {
 export const AboutModal = ({ isOpen, handleClose }: Props) => {
   return (
     <BaseModal title="About" isOpen={isOpen} handleClose={handleClose}>
-      <p className="text-sm text-gray-500 dark:text-gray-200">
+      <p className="text-sm text-slate-300">
         This is an open source clone of the game Wordle -{' '}
-        <a href="https://github.com/luciovilla/palabra" className="underline font-bold">
+        <a
+          href="https://github.com/luciovilla/palabra"
+          className="underline font-bold hover:text-white"
+        >
           check out the code
         </a>{' '}
         and{' '}
-        <a href="https://www.powerlanguage.co.uk/wordle/" className="underline font-bold">
+        <a
+          href="https://www.powerlanguage.co.uk/wordle/"
+          className="underline font-bold hover:text-white"
+        >
           play the original game
         </a>
         .

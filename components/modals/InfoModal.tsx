@@ -1,5 +1,5 @@
-import { BaseModal } from './BaseModal'
 import { Cell } from '../grid/Cell'
+import { BaseModal } from './BaseModal'
 
 type Props = {
   isOpen: boolean

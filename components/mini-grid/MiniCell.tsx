@@ -1,6 +1,6 @@
 import classnames from 'classnames'
 
-import { CharStatus } from '../../lib/statuses'
+import type { CharStatus } from '../../lib/statuses'
 
 type Props = {
   status: CharStatus
@@ -16,9 +16,5 @@ export const MiniCell = ({ status }: Props) => {
     }
   )
 
-  return (
-    <>
-      <div className={classes}></div>
-    </>
-  )
+  return <div className={classes}></div>
 }

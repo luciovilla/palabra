@@ -1,6 +1,6 @@
 import { Dialog, DialogBackdrop, Transition } from '@headlessui/react'
 import { XCircleIcon } from '@heroicons/react/24/outline'
-import { Fragment, ReactNode } from 'react'
+import { Fragment, type ReactNode } from 'react'
 
 type Props = {
   title: string

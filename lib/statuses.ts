@@ -38,17 +38,20 @@ export const getStatuses = (guesses: string[]): { [key: string]: CharStatus } =>
     word.split('').forEach((letter, i) => {
       if (!solution.includes(letter)) {
         // make status absent
-        return (charObj[letter] = 'absent')
+        charObj[letter] = 'absent'
+        return
       }
 
       if (letter === solution[i]) {
         //make status correct
-        return (charObj[letter] = 'correct')
+        charObj[letter] = 'correct'
+        return
       }
 
       if (charObj[letter] !== 'correct') {
         //make status present
-        return (charObj[letter] = 'present')
+        charObj[letter] = 'present'
+        return
       }
     })
   })

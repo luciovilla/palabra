@@ -1,4 +1,4 @@
-import { GameStats, loadStatsFromLocalStorage, saveStatsToLocalStorage } from './localStorage'
+import { type GameStats, loadStatsFromLocalStorage, saveStatsToLocalStorage } from './localStorage'
 
 // In stats array elements 0-5 are successes in 1-6 trys
 

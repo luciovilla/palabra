@@ -2,8 +2,7 @@ import { getGuessStatuses } from './statuses'
 import { solutionIndex } from './words'
 
 export const shareStatus = (guesses: string[], lost: boolean) => {
-  const shareText =
-    `La Palabra ${solutionIndex} ${lost ? 'X' : guesses.length}/6\n\n` + generateEmojiGrid(guesses)
+  const shareText = `La Palabra ${solutionIndex} ${lost ? 'X' : guesses.length}/6\n\n${generateEmojiGrid(guesses)}`
 
   if (navigator.share) {
     navigator.share({

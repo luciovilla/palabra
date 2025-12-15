@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { CharStatus } from '../../lib/statuses'
+import type { CharStatus } from '../../lib/statuses'
 
 type Props = {
   value?: string

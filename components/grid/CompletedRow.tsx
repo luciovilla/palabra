@@ -1,5 +1,5 @@
-import { Cell } from './Cell'
 import { getGuessStatuses } from '../../lib/statuses'
+import { Cell } from './Cell'
 
 type Props = {
   guess: string

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Alert } from '../components/alerts/Alert'
 import { Grid } from '../components/grid/Grid'
@@ -13,7 +13,7 @@ import { WIN_MESSAGES } from '../constants/strings'
 import { WORDS } from '../constants/wordlist'
 import { loadGameStateFromLocalStorage, saveGameStateToLocalStorage } from '../lib/localStorage'
 import { addStatsForCompletedGame, loadStats } from '../lib/stats'
-import { isWordInWordList, isWinningWord, solution } from '../lib/words'
+import { isWinningWord, isWordInWordList, solution } from '../lib/words'
 
 const wordInfo = WORDS.find((w) => {
   return w.word === solution.toLocaleLowerCase()

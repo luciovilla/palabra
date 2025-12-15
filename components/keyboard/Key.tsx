@@ -1,7 +1,7 @@
-import { ReactNode, useEffect, useState } from 'react'
+import { type ReactNode, useEffect, useState } from 'react'
 
-import { KeyValue } from '../../lib/keyboard'
-import { CharStatus } from '../../lib/statuses'
+import type { KeyValue } from '../../lib/keyboard'
+import type { CharStatus } from '../../lib/statuses'
 
 type Props = {
   children?: ReactNode
